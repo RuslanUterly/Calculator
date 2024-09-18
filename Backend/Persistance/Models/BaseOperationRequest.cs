@@ -1,6 +1,6 @@
 ﻿namespace Persistance.Models;
 
-public class Operand
+public class BaseOperationRequest
 {
     public double A { get; set; }
     public double B { get; set; }
