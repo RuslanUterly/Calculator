@@ -10,5 +10,5 @@ public interface ICalculatorService
     CalculationResult Multiply(double a, double b);
     CalculationResult Divide(double a, double b);
     CalculationResult Power(double baseValue, double exponent);
-    CalculationResult Root(double value);
+    CalculationResult Root(double baseValue, double exponent);
 }
