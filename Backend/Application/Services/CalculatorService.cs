@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using AngouriMath;
+using Application.Interfaces;
 using Application.Models;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,9 @@ public class CalculatorService : ICalculatorService
     {
         try
         {
-            var result = new DataTable().Compute(expression, null);
-            return CalculationResult.Operation(Convert.ToDouble(result));
+            var operation = MathS.FromString(expression);
+            var result = operation.EvalNumerical().ToNumerics();
+            return CalculationResult.Operation(result.Real);
         }
         catch (Exception ex)
         {

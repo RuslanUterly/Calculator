@@ -11,7 +11,7 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
 {
     private readonly ICalculatorService _calculatorService = calculatorService;
 
-    [HttpGet("add")]
+    [HttpPost("add")]
     public IActionResult Add([FromBody] BaseOperationRequest operand)
     {
         var calculate = _calculatorService.Add(operand.A, operand.B);
@@ -19,7 +19,7 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
         return Ok(calculate.Result);
     }
 
-    [HttpGet("subtract")]
+    [HttpPost("subtract")]
     public IActionResult Subtract([FromBody] BaseOperationRequest operand)
     {
         var calculate = _calculatorService.Subtract(operand.A, operand.B);
@@ -27,7 +27,7 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
         return Ok(calculate.Result);
     }
 
-    [HttpGet("multiply")]
+    [HttpPost("multiply")]
     public IActionResult Multiply([FromBody] BaseOperationRequest operand)
     {
         var calculate = _calculatorService.Multiply(operand.A, operand.B);
@@ -35,7 +35,7 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
         return Ok(calculate.Result);
     }
 
-    [HttpGet("divide")]
+    [HttpPost("divide")]
     public IActionResult Divide([FromBody] BaseOperationRequest operand)
     {
         var calculate = _calculatorService.Divide(operand.A, operand.B);
@@ -46,14 +46,14 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
         return Ok(calculate.Result);
     }
 
-    [HttpGet("pow")]
+    [HttpPost("pow")]
     public IActionResult Power([FromBody] PowerRequest operation)
     {
         var calculate = _calculatorService.Power(operation.BaseValue, operation.Exponent);
         return Ok(calculate.Result);
     }
 
-    [HttpGet("sqrt")]
+    [HttpPost("root")]
     public IActionResult Root([FromBody] PowerRequest operation)
     {
         var calculate = _calculatorService.Root(operation.BaseValue, operation.Exponent);
