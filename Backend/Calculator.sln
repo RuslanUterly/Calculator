@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{F78976E8-7247-48B3-8919-9583B9832CA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator", "Calculator\Calculator.csproj", "{F78976E8-7247-48B3-8919-9583B9832CA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{A8B1DCEF-4B1E-453F-8A32-F7AFAD5844C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{A8B1DCEF-4B1E-453F-8A32-F7AFAD5844C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistance", "Persistance\Persistance.csproj", "{F587F1A4-44AA-4CF4-BB38-3F9904EFF757}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistance", "Persistance\Persistance.csproj", "{F587F1A4-44AA-4CF4-BB38-3F9904EFF757}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{80D148D1-6920-4FC7-907B-BF5896DA66DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{F587F1A4-44AA-4CF4-BB38-3F9904EFF757}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F587F1A4-44AA-4CF4-BB38-3F9904EFF757}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F587F1A4-44AA-4CF4-BB38-3F9904EFF757}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D148D1-6920-4FC7-907B-BF5896DA66DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D148D1-6920-4FC7-907B-BF5896DA66DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D148D1-6920-4FC7-907B-BF5896DA66DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D148D1-6920-4FC7-907B-BF5896DA66DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -38,11 +38,6 @@ public class CalculatorService : ICalculatorService
 
     public CalculationResult Divide(double a, double b)
     {
-        if (b == 0)
-        {
-            return CalculationResult.Error("Деление на ноль");
-        }
-
         return CalculationResult.Operation(a / b);
     }
 
@@ -53,20 +48,11 @@ public class CalculatorService : ICalculatorService
 
     public CalculationResult Power(double baseValue, double exponent)
     {
-        if ((baseValue == 0) || (exponent < 0))
-            return CalculationResult.Error("Результат произведения - бесконечность");
-
         return CalculationResult.Operation(Math.Pow(baseValue, exponent));
     }
 
     public CalculationResult Root(double baseValue, double exponent)
     {
-        if ((baseValue == 0) || (exponent < 0))
-            return CalculationResult.Error("Результат произведения - бесконечность");
-
-        if (baseValue < 0)
-            return CalculationResult.Error("Нельзя произвести операцию с числем меньше нуля");
-
         return CalculationResult.Operation(Math.Pow(baseValue, 1.0 / exponent));
     }
 }

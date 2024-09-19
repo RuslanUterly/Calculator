@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Persistance.Models;
+using Persistance;
+using Infrastructure;
 
 namespace Calculator.Controllers;
 
@@ -36,6 +38,7 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
     }
 
     [HttpPost("divide")]
+    [DevidedByZeroFilter()]
     public IActionResult Divide([FromBody] BaseOperationRequest operand)
     {
         var calculate = _calculatorService.Divide(operand.A, operand.B);
@@ -47,6 +50,7 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
     }
 
     [HttpPost("pow")]
+    [InfinityFilter()]
     public IActionResult Power([FromBody] PowerRequest operation)
     {
         var calculate = _calculatorService.Power(operation.BaseValue, operation.Exponent);
@@ -58,6 +62,8 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
     }
 
     [HttpPost("root")]
+    [InfinityFilter()]
+    [NegativeNumberFilter()]
     public IActionResult Root([FromBody] PowerRequest operation)
     {
         var calculate = _calculatorService.Root(operation.BaseValue, operation.Exponent);
