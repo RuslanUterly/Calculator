@@ -50,6 +50,10 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
     public IActionResult Power([FromBody] PowerRequest operation)
     {
         var calculate = _calculatorService.Power(operation.BaseValue, operation.Exponent);
+
+        if (calculate.IsError)
+            return BadRequest(calculate.ErrorMessage);
+
         return Ok(calculate.Result);
     }
 
