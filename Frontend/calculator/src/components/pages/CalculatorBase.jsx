@@ -3,9 +3,9 @@ import React, { useState } from "react";
 export default function Base() {
   const [firstValue, setFirstValue] = useState("");
   const [secondValue, setSecondValue] = useState("");
-  const [operation, setOperation] = useState("");
+  const [operation, setOperation] = useState("add");
   const [error, setError] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState(null);
 
   const handleCalculation = async () => {
     try {
@@ -24,6 +24,12 @@ export default function Base() {
       });
 
       const data = await response.text();
+
+      if (!response.ok) {
+        setResult(null);
+        setError(data);
+        return;
+      }
 
       setResult(data);
       setError("");
@@ -69,8 +75,8 @@ export default function Base() {
         >
           Расчет
         </button>
-        {error && <div>{error}</div>}
-        {result !== null && <div>{result}</div>}
+        {error && <div className="p-3 border-2 bg-red-200 border-red-600 rounded-xl">{error}</div>}
+        {result !== null && <div className="p-3 border-2 bg-green-200 border-green-600 rounded-xl">{result}</div>}
       </div>
     </section>
   );
