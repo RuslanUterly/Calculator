@@ -44,14 +44,14 @@ export default function Base() {
     <section className="mx-auto w-96 bg-slate-200 rounded-xl">
       <div className="flex flex-col py-8 px-8 gap-4">
         <input
-          className="block px-4 py-1 rounded-xl"
+          className="block px-4 py-1 rounded-xl outline-none focus:shadow-lg"
           type="number"
           placeholder="Введите число"
           value={firstValue}
           onChange={(e) => setFirstValue(e.target.value)}
         />
         <select
-          className="block px-4 py-1 rounded-xl"
+          className="block px-4 py-1 rounded-xl focus: shadow-lg"
           value={operation}
           onChange={(e) => setOperation(e.target.value)}
         >
@@ -63,14 +63,14 @@ export default function Base() {
           <option value="root">Извелечение корня</option>
         </select>
         <input
-          className="block px-4 py-1 rounded-xl"
+          className="block px-4 py-1 rounded-xl outline-none focus:shadow-lg"
           type="number"
           placeholder="Введите число"
           value={secondValue}
           onChange={(e) => setSecondValue(e.target.value)}
         />
         <button
-          className="py-2 items-start w-32 text-white text-lg bg-slate-400 rounded-xl"
+          className="py-2 items-start w-32 text-white text-lg bg-slate-400 rounded-xl hover:bg-slate-500 active:bg-slate-100"
           onClick={handleCalculation}
         >
           Расчет

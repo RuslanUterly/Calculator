@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 export default function NavBar() {
@@ -11,7 +11,7 @@ export default function NavBar() {
           <NavLink
             to="/"
             className={`px-5 py-2 rounded-xl ${
-              location.pathname === "/" ? "bg-slate-400" : ""
+              location.pathname === "/" ? "bg-slate-400 text-white" : "hover:bg-slate-100"
             }`}
           >
             Базовые операции
@@ -21,7 +21,7 @@ export default function NavBar() {
           <NavLink
             to="/expression"
             className={`px-5 py-2 rounded-xl ${
-              location.pathname === "/expression" ? "bg-slate-400" : ""
+              location.pathname === "/expression" ? "bg-slate-400 text-white" : "hover:bg-slate-100"
             }`}
           >
             Выражение
