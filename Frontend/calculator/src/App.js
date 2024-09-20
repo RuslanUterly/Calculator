@@ -6,10 +6,10 @@ import CalculatorExpression from './components/pages/CalculatorExpression.jsx';
 
 function App() {
   return (
-    <div>
+    <div className='flex flex-col min-h-screen gap-8 justify-center'>
       <NavBar />
       <Routes>
-        <Route path="/basic" element={<CalculatorBase />} />
+        <Route path="/" element={<CalculatorBase />} />
         <Route path="/expression" element={<CalculatorExpression />} />
       </Routes>
     </div>
