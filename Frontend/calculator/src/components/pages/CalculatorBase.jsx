@@ -9,22 +9,29 @@ export default function Base() {
 
   const handleCalculation = async () => {
     try {
-      const firstOperand = parseFloat(firstValue);
-      const secondOperand = parseFloat(secondValue);
+      const a = parseFloat(firstValue);
+      const b = parseFloat(secondValue);
 
-      const response = await fetch(`http://localhost:5058/${operation}`, {
+      const requestBody = {
+        add: { a, b },
+        subtract: { a, b },
+        multiply: { a, b },
+        divide: { a, b },
+        pow: { baseValue: a, exponent: b },
+        root: { baseValue: a, exponent: b }
+      }[operation];
+
+      console.log(requestBody);
+
+      const response = await fetch(`https://localhost:7207/api/calculator/${operation}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ firstOperand, secondOperand }),
+        body: JSON.stringify(requestBody),
       });
 
       const data = await response.text();
-      
-      if (!response.ok) {
-        alert(data);
-      }
 
       setResult(data);
       setError("");
@@ -54,7 +61,7 @@ export default function Base() {
           <option value="subtract">Вычитание</option>
           <option value="multiply">Умножение</option>
           <option value="divide">Деление</option>
-          <option value="power">Возведение в степень</option>
+          <option value="pow">Возведение в степень</option>
           <option value="root">Извелечение корня</option>
         </select>
         <input
