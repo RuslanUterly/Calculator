@@ -9,26 +9,18 @@ export default function Base() {
 
   const handleCalculation = async () => {
     try {
-      const a = parseFloat(firstValue);
-      const b = parseFloat(secondValue);
-
-      const requestBody = {
-        add: { a, b },
-        subtract: { a, b },
-        multiply: { a, b },
-        divide: { a, b },
-        pow: { baseValue: a, exponent: b },
-        root: { baseValue: a, exponent: b }
-      }[operation];
-
-      console.log(requestBody);
+      const baseValue = parseFloat(firstValue);
+      const value = parseFloat(secondValue);
 
       const response = await fetch(`https://localhost:7207/api/calculator/${operation}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify({
+          baseValue: baseValue,
+          value: value
+        }),
       });
 
       const data = await response.text();
