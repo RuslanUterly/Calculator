@@ -14,7 +14,7 @@ public class NegativeNumberFilter : Attribute, IActionFilter
     {
         object operation = context.ActionArguments["operation"];
 
-        if (operation is PowerRequest request)
+        if (operation is OperationRequest request)
         {
 
             if ((request.BaseValue < 0))

@@ -14,34 +14,34 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
     private readonly ICalculatorService _calculatorService = calculatorService;
 
     [HttpPost("add")]
-    public IActionResult Add([FromBody] BaseOperationRequest operand)
+    public IActionResult Add([FromBody] OperationRequest operand)
     {
-        var calculate = _calculatorService.Add(operand.A, operand.B);
+        var calculate = _calculatorService.Add(operand.BaseValue, operand.Value);
 
         return Ok(calculate.Result);
     }
 
     [HttpPost("subtract")]
-    public IActionResult Subtract([FromBody] BaseOperationRequest operand)
+    public IActionResult Subtract([FromBody] OperationRequest operand)
     {
-        var calculate = _calculatorService.Subtract(operand.A, operand.B);
+        var calculate = _calculatorService.Subtract(operand.BaseValue, operand.Value);
 
         return Ok(calculate.Result);
     }
 
     [HttpPost("multiply")]
-    public IActionResult Multiply([FromBody] BaseOperationRequest operand)
+    public IActionResult Multiply([FromBody] OperationRequest operand)
     {
-        var calculate = _calculatorService.Multiply(operand.A, operand.B);
+        var calculate = _calculatorService.Multiply(operand.BaseValue, operand.Value);
 
         return Ok(calculate.Result);
     }
 
     [HttpPost("divide")]
     [DevidedByZeroFilter()]
-    public IActionResult Divide([FromBody] BaseOperationRequest operand)
+    public IActionResult Divide([FromBody] OperationRequest operand)
     {
-        var calculate = _calculatorService.Divide(operand.A, operand.B);
+        var calculate = _calculatorService.Divide(operand.BaseValue, operand.Value);
 
         if (calculate.IsError)
             return BadRequest(calculate.ErrorMessage);
@@ -51,9 +51,9 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
 
     [HttpPost("pow")]
     [InfinityFilter()]
-    public IActionResult Power([FromBody] PowerRequest operation)
+    public IActionResult Power([FromBody] OperationRequest operation)
     {
-        var calculate = _calculatorService.Power(operation.BaseValue, operation.Exponent);
+        var calculate = _calculatorService.Power(operation.BaseValue, operation.Value);
 
         if (calculate.IsError)
             return BadRequest(calculate.ErrorMessage);
@@ -64,9 +64,9 @@ public class CalculatorController(ICalculatorService calculatorService) : Contro
     [HttpPost("root")]
     [InfinityFilter()]
     [NegativeNumberFilter()]
-    public IActionResult Root([FromBody] PowerRequest operation)
+    public IActionResult Root([FromBody] OperationRequest operation)
     {
-        var calculate = _calculatorService.Root(operation.BaseValue, operation.Exponent);
+        var calculate = _calculatorService.Root(operation.BaseValue, operation.Value);
 
         if (calculate.IsError)
             return BadRequest(calculate.ErrorMessage);

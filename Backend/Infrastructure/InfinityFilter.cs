@@ -14,9 +14,9 @@ public class InfinityFilter : Attribute, IActionFilter
     {
         object operation = context.ActionArguments["operation"];
 
-        if (operation is PowerRequest request)
+        if (operation is OperationRequest request)
         {
-            if ((request.BaseValue == 0) && (request.Exponent < 0))
+            if ((request.BaseValue == 0) && (request.Value < 0))
             {
                 context.Result = new BadRequestObjectResult("Результат произведения - бесконечность");
                 return;

@@ -14,9 +14,9 @@ public class DevidedByZeroFilter : Attribute, IActionFilter
     {
         object operation = context.ActionArguments["operand"];
 
-        if (operation is BaseOperationRequest request)
+        if (operation is OperationRequest request)
         {
-            if (request.A == 0)
+            if (request.BaseValue == 0)
             {
                 context.Result = new BadRequestObjectResult("Деление на ноль");
                 return;
