@@ -10,6 +10,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddCors();
 
         builder.Services.AddControllers();
         builder.Services.AddTransient<ICalculatorService, CalculatorService>();
@@ -30,6 +31,12 @@ public class Program
 
         app.UseAuthorization();
 
+        app.UseCors(options => options
+                .WithOrigins(new[] { "http://localhost:3000" })
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+            );
 
         app.MapControllers();
 
